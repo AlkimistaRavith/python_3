@@ -1,7 +1,11 @@
 emergencia = 0
+#estimulos
 paso1 = 0
+#respira
 paso2 = 0
+#signos de vida
 paso3 = 0
+#ambulancia
 paso4 = 0
 paso5 = 0
 
@@ -17,7 +21,7 @@ while emergencia == 0 :
     elif inicio == "no" or inicio == "n" :
         emergencia = "fin"
     else :
-        print("La opción ingresada no es válida")
+        print("La opción ingresada no es válida. (1)")
         emergencia = 0
 
 while emergencia == "activo" :
@@ -34,7 +38,7 @@ while emergencia == "activo" :
         paso1 = 0
         paso2 = "activo"
     else :
-        print("Respuesta no válida, por favor responde de nuevo.")
+        print("Respuesta no válida, por favor responde de nuevo. (2)")
         paso1 = "activo"
 
     #activación paso 2
@@ -50,33 +54,46 @@ while emergencia == "activo" :
         paso2 = 0
         paso3 = "activo"
     else :
-        print("Respuesta no válida, por favor responde de nuevo.")
+        print("Respuesta no válida, por favor responde de nuevo. (3)")
         paso2 = "activo"
 
-    #activación paso 3
-    while paso3 == "activo" :
+    #activación paso 3 y paso 4
+    while paso4 == "activo" :
+        #paso 3
         if paso3 == "activo" :
             paso3 = input("¿La persona tiene signos de vida activos? (si/no): ")
         #condicional paso 3
         if paso3 == "si" or paso3 == "s" :
             print("Manten bajo vigilancia sus signos vitales, hasta que llegue la Ambulancia")
-            paso3 = "activo"
+            paso3 = "fin"
             paso4 = "activo"
         elif paso3 == "no" or paso3 == "n" :
             print("Administra Compresiones torácicas hasta que recupere su signos vitales o llegue la Ambulancia.")
+            paso3 = "fin"
+            paso4 = "activo"
+        else :
+            print("Respuesta no válida, por favor responde de nuevo. (4)")
+            paso3 = "activo"
+            paso4 = "fin"
+        #paso4
+        if paso4 == "activo" :
+            paso4 = input("Llegó la ambulancia? (si/no): ")
+        
+        if paso4 == "si" or paso4 == "s" :
+            print("Informa detalladamente lo ocurrido al paramédico. Y permite que continue con la atención de la emergencia.")
+            paso3 = "fin"
+            paso4 = "fin"
+            emergencia = "fin"
+        elif paso4 == "no" or paso4 == "n" :
             paso3 = "activo"
             paso4 = "activo"
-            paso5 = "activo"
-            emergencia = "fin"
         else :
-            print("Respuesta no válida, por favor responde de nuevo.")
-            paso3 = "activo"
-        
-        if paso4 == "activo" :
-            
+            print("Respuesta no válida, por favor responde de nuevo. (5)")
+            paso4 = "activo"
+            paso3 = "fin"
 
 
-        emergencia = "fin"
+emergencia = "fin"
             
 
 
