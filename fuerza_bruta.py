@@ -38,4 +38,4 @@ if activar == "si" :
     #suma de los contar_intentos por cada iteración.
     total_intentos = contar_intentos(password)
 
-    print(f"La contraseña fue adivinada en {total_intentos} intentos.")
+    print(f"La contraseña fue forzada en {total_intentos} intentos.")
